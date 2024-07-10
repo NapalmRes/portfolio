@@ -297,6 +297,7 @@ async def on_message(message):
             win = str(((aw)/(aw+ad+al))*100)
             await message.channel.send(a + ' has a win percentage of:')
             await message.channel.send(win+"%")
+             
     if message.content == '&hangman':
             wf = 0
             hints = 1
@@ -367,54 +368,7 @@ async def on_message(message):
                 i += 1
             if wf == 0:
                 await message.channel.send('You have lost the word was: '+secret_word)
-
-    #if message.content == '&scrabble':
-        #HAND_SIZE = 7
-        #total_score = 0
-        #substiute = 1
-        #await message.channel.send('Enter total number of hands:')
-        #no_handsi = await client.wait_for('message',timeout=60.0)
-        #no_hands = no_handsi.content
-
-        #try :
-            #int(no_hands)
-        #except:
-            #print('That was not an integer, exiting game...')
-            #return
-
-        #for i in range(int(no_hands)):
-            #hand = deal_hand(HAND_SIZE)
-            #await message.channel.send('Current hand: ' + display_hand(hand))
-            #if substitute > 1:
-                #await message.channel.send('Would you like to substiute a letter?')
-                #asksi = await client.wait_for('message',timeout=60.0)
-                #asks = asksi.content.lower()
-                #if asks == 'yes':
-                    #substiute -= 1
-                    #await message.channel.send('Enter the letter to replace')
-                    #handi = await client.wait_for('message',timeout=60.0)
-                    #handl = handi.content.lower()
-                    #hand = substitute_hand(hand, handl)
-            #score = 0
-            #while len(hand) > 0:
-                #await message.channel.send('Current hand: ' + display_hand(hand))
-                #await message.channel.send('Enter word, or "!!" when you are finished playing your hand:')
-                #wordi = await client.wait_for('message',timeout=60.0)
-                #word = wordi.content.lower()
-                #if word == '!!':
-                    #break
-                #if is_valid_word(word, hand, word_list) == True:
-                    #word_score = get_word_score(word, len(hand))
-                    #await message.channel.send(word + ' earned ' + str(word_score) + ' points.')
-                    #score += word_score
-                    #await message.channel.send('Total score for this hand: ' + str(score))
-                #else:
-                    #await message.channel.send('That is not a valid word. Please choose another word.')
-                #hand = update_hand(hand, word)
-            #await message.channel.send('Total score for this hand: ' + str(score))
-            #total_score += score
-        #await message.channel.send('The total score for all ' + str(no_hands) + ' hands: ' + str(total_score))
-
+                 
     if message.content == '&scrabblecomp':
         HAND_SIZE = 7
         total_score = 0
@@ -473,6 +427,7 @@ async def on_message(message):
             highscores.to_csv("highscores.csv")
             print(highscores.loc[Ua])
             await message.channel.send('You have achieved a new personal highscore!')
+             
     if message.content == '&highscores':
         
         scoresl = pd.read_csv("highscores.csv", index_col="user")
